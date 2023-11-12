@@ -10,21 +10,22 @@ struct ListNode
     struct ListNode *next;  // points to the next node
 };
 
-ListNode* head;  
+ListNode* head;
 
 public:
-   NumberList(){ 
-     head = nullptr; 
-   }
+    NumberList(){ 
+        head = nullptr; 
+        }
 
-   NumberList(const NumberList &obj);
+    // Copy constructor
+    NumberList(const NumberList &obj);
 
-   // Destructor  --WIP--
-   ~NumberList();
-
-   void appendNode(double);
-   void displayList() const;
-
+    // Destructor
+    ~NumberList();
+    
+    void appendNode(double);
+    void displayList() const;
+    void reverseList();
 };
 
 #endif

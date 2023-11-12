@@ -4,8 +4,8 @@ using namespace std;
 
 // Copy Constructor
 NumberList::NumberList(const NumberList &obj){
-    ListNode *current;
-    ListNode *nextNtbC; // nextLtbC == "next Node to be Copied"
+    ListNode *current = nullptr;
+    ListNode *nextNtbC = nullptr; // nextLtbC == "next Node to be Copied"
 
     if(obj.head == nullptr)
         head = nullptr;
@@ -48,7 +48,7 @@ void NumberList::appendNode(double num){
 // Display contents of linked list | List Print
 void NumberList::displayList() const {
     // To travel list
-    ListNode *nodePtr;
+    ListNode *nodePtr = nullptr;
 
     // To point to haed of list
     nodePtr = head;
@@ -60,6 +60,19 @@ void NumberList::displayList() const {
 
 // List Reverse
 void NumberList::reverseList(){
+    ListNode *current = head;
+    ListNode *previous = nullptr;
+    ListNode *nextNtbR = nullptr;   // "NtbR" = Node to be Reversed
+
+    while(current){
+        nextNtbR = current->next;   // Make nextNtbr point to next node in list
+        current->next = previous;   // Make next node in list point to previous
+        previous = current;         // Make previous point to current, next node now points to current node.
+        current = nextNtbR;         // Move to next node in list
+    }
+
+    // Previous now holds the head node so assign previous to head
+    head = previous;
 }
 
 // Destructor
@@ -70,7 +83,7 @@ NumberList::~NumberList()
 
    current = head;
 
-   while (current != nullptr)
+   while (current)
    {
       // Save a pointer to the next node.
       nextNtbD = current->next;

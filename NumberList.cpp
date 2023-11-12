@@ -50,7 +50,7 @@ void NumberList::appendNode(double num){
         ListNode* nodePtr = head;  
         while (nodePtr->next)
             nodePtr = nodePtr->next;
-        nodePtr->next = newNode;    
+        nodePtr->next = newNode;
     }
 }
 
@@ -89,13 +89,14 @@ void NumberList::reverseList(){
 }
 
 // Search List
-int NumberList::searchList(int val) const{
-    ListNode *search = head;
+int NumberList::searchList(double val) const{
+    ListNode *search;
     int position = 0;
 
-    if(!search){    // If empty list
+    if(!head){    // If empty list
         return -1;
     }
+    search = head;
 
     // Traverse list, compare node value to val, return position if/when found
     while(search && search->value != val){
@@ -111,8 +112,35 @@ int NumberList::searchList(int val) const{
 }
 
 // Positional insert
-void NumberList::positionInsert(int val){
+void NumberList::positionInsert(int pos, double val){
+    ListNode *current;
+    ListNode *newNode = new ListNode;
+    newNode->value = val;
+    ListNode *previousNode = nullptr;
 
+    if(!current){   // List is empty
+        head = newNode;
+        head->next = nullptr;
+    }
+    else{           // List is not empty
+        current = head;
+        int count = 0;
+        while(current && count <= pos){   // Traverse list until position/end are found
+            previousNode = current;
+            if(count == pos){             // Position found, insert new node
+                previousNode->next = newNode;
+                newNode->next = current;
+                return;
+            }
+            if(current->next == nullptr){ // Requested position is out of range, insert at end
+                current->next = newNode;
+                newNode->next = nullptr;
+                return;
+            }
+            current = current->next;
+            count++;
+        }
+    }
 }
 
 // Destructor

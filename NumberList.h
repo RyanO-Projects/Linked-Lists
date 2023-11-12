@@ -13,7 +13,7 @@ struct ListNode
 ListNode* head;
 
 public:
-    NumberList(){ 
+    NumberList(){
         head = nullptr; 
         }
 
@@ -26,8 +26,8 @@ public:
     void appendNode(double);
     void displayList() const;
     void reverseList();
-    int searchList(int) const;
-
+    int searchList(double) const;
+    void positionInsert(int, double);
 };
 
 #endif

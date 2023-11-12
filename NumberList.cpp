@@ -2,10 +2,19 @@
 #include "NumberList.h"
 using namespace std;
 
+/*
+* #2: List Print |              done <>
+* #3: Copy Constructor |        done <>
+* #4: Reverse List |            done <>
+* #5: List Search |             done <>
+* #6: Positional Insertion |    not done
+* #7: Positional Removal |      not done
+*/
+
 // Copy Constructor
 NumberList::NumberList(const NumberList &obj){
     ListNode *current = nullptr;
-    ListNode *nextNtbC = nullptr; // nextLtbC == "next Node to be Copied"
+    ListNode *nextNtbC = nullptr; // NtbC = "Node to be Copied"
 
     if(obj.head == nullptr)
         head = nullptr;
@@ -34,7 +43,7 @@ void NumberList::appendNode(double num){
     newNode->value = num;
     newNode->next = nullptr; 
 
-    if (!head)  // head == nullptr | List is empty
+    if (!head)  // If empty list
         head = newNode;
 
     else {  // list is not empty, 
@@ -62,7 +71,11 @@ void NumberList::displayList() const {
 void NumberList::reverseList(){
     ListNode *current = head;
     ListNode *previous = nullptr;
-    ListNode *nextNtbR = nullptr;   // "NtbR" = Node to be Reversed
+    ListNode *nextNtbR = nullptr;   // NtbR = "Node to be Reversed"
+
+    if(!head){  // If empty list
+        return;
+    }
 
     while(current){
         nextNtbR = current->next;   // Make nextNtbr point to next node in list
@@ -71,17 +84,42 @@ void NumberList::reverseList(){
         current = nextNtbR;         // Move to next node in list
     }
 
-    // Previous now holds the head node so assign previous to head
+    // Previous now holds the end/head node so assign previous to head
     head = previous;
+}
+
+// Search List
+int NumberList::searchList(int val) const{
+    ListNode *search = head;
+    int position = 0;
+
+    if(!search){    // If empty list
+        return -1;
+    }
+
+    // Traverse list, compare node value to val, return position if/when found
+    while(search && search->value != val){
+        if(search->value == val){
+            return position;
+        }
+        search = search->next;
+        position += 1;
+    }
+
+    // Value wasn't found
+    return -1;
+}
+
+// Positional insert
+void NumberList::positionInsert(int val){
+
 }
 
 // Destructor
 NumberList::~NumberList()
 {
-   ListNode *current;   // To traverse the list
-   ListNode *nextNtbD;  // To point to the next node
-
-   current = head;
+   ListNode *current = head;   // To traverse the list
+   ListNode *nextNtbD;  // 
 
    while (current)
    {

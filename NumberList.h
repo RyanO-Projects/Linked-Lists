@@ -26,6 +26,8 @@ public:
     void appendNode(double);
     void displayList() const;
     void reverseList();
+    int searchList(int) const;
+
 };
 
 #endif

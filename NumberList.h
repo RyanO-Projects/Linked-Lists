@@ -28,6 +28,7 @@ public:
     void reverseList();
     int searchList(double) const;
     void positionInsert(int, double);
+    void positionRemove(int);
 };
 
 #endif

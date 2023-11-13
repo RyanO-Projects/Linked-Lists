@@ -20,10 +20,10 @@ NumberList::NumberList(const NumberList &obj){
 
     while(nextNode) {
         currentNode->next = new ListNode;       // Create new node for next pointer
-        currentNode = currentNode->next;            // Move currentNode pointer to newly created ListNode
+        currentNode = currentNode->next;        // Move currentNode pointer to newly created ListNode
         currentNode->next = nullptr;            // Initialize next pointer
         currentNode->value = nextNode->value;   // Copy next value to currentNode value
-        nextNode = nextNode->next;          // Make next point to nextLtbC's next pointer.
+        nextNode = nextNode->next;              // Make next point to nextLtbC's next pointer.
     }
 }
 
@@ -83,13 +83,14 @@ int NumberList::searchList(double val) const {
     ListNode *search;
     int position = 0;
 
-    if(!head)     // If empty list
+    if(!head){     // If empty list
         return -1;
+        std::cout << "TEST::::\n";}
 
     search = head;
 
     // Traverse list, compare node value to val, return position if/when found
-    while(search && search->value != val) {
+    while(search) {
         if(search->value == val)
             return position;
         
@@ -128,7 +129,6 @@ void NumberList::positionInsert(int pos, double val) {
         }
         else {             // Position was not found, add to end of list
             previousNode->next = newNode;
-            std::cout << "END" << std::endl;
             newNode->next = nullptr;
         }
     }

@@ -9,11 +9,29 @@ int main(){
     list.appendNode(3);
     list.appendNode(4);
 
-    //list.displayList();
+    NumberList list2 = list; // Test copy constructor
 
-    list.positionRemove(2);
+    list2.appendNode(7);  // Append to copied list
 
-    //std::cout << "DEBUG:: Should insert in third position, should now read \"1 2 0 3 4 5\"" << std::endl;
+    std::cout << "Contents of list: " << std::endl;
+    list.displayList(); // Test if list and list2 are different
+    std::cout << "Contents of list2(should be different from list): " << std::endl;
+    list2.displayList();
 
+    std::cout << "\nSearch list: " << list.searchList(2) << std::endl; // Should print '2'
+    
+    std::cout << "\nReversed list2:\n";
+    list2.reverseList();
+    list2.displayList();
+
+    list.positionInsert(3, 15); // Within range, should be 3rd in list
+    list.positionInsert(100, 100); // Outside of range, should be at end
+    std::cout << "\nlist with inserted nodes:\n";
     list.displayList();
+
+    list.positionRemove(2);  // Remove 2nd position
+    std::cout << "\nlist after removing 2nd node\n";
+    list.displayList();
+
+    return 0;
 }
